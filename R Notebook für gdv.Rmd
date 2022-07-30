@@ -1,0 +1,41 @@
+---
+title: "GDV_Pokemon_Data"
+output: html_notebook
+---
+```{r}
+#  Bibliotheken einlesen
+library("plotly")
+library("plyr")
+library("dplyr")
+
+```
+
+
+```{r}
+# Daten einlesen
+data = read.csv("Pokemon Datensatz.csv")
+head(data)
+```
+# LE 1 - Viz Basics & Chart types
+
+```{r}
+# ein paar plots machen mit dem Pokemon Datensatz
+# barchart um Vergleiche zu ziehen
+
+power <- data %>%
+  ggplot(aes(x = Type.1 , y = HP, color = Legendary )) +
+  geom_point()
+  ggplotly(power)
+
+
+
+
+```
+```{r}
+gen1 <- data %>%
+  filter(Generation == 1)
+
+ggplot(gen1, aes(x = Type.1, fill = Type.1))+
+  geom_bar()
+```
+
